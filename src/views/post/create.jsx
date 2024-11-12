@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 //import API
 import api from "../../api";
 
+// import navbar
+import Navbar from "../../components/Navbar";
+
 export default function PostCreate() {
   //define state
   const [image, setImage] = useState("");
@@ -49,67 +52,70 @@ export default function PostCreate() {
       });
   };
   return (
-    <div className="container mt-5">
-      <div className="row">
-        <div className="col-md-12">
-          <div className="card border-0 rounded shadow">
-            <div className="card-body">
-              <form onSubmit={storePost}>
-                <div className="mb-3">
-                  <label className="form-label fw-bold">Image</label>
-                  <input
-                    type="file"
-                    onChange={handleFileChange}
-                    className="form-control"
-                  />
-                  {errors.image && (
-                    <div className="alert alert-danger mt-2">
-                      {errors.image[0]}
-                    </div>
-                  )}
-                </div>
+    <>
+      <Navbar />
+      <div className="container mt-5">
+        <div className="row">
+          <div className="col-md-12">
+            <div className="card border-0 rounded shadow">
+              <div className="card-body">
+                <form onSubmit={storePost}>
+                  <div className="mb-3">
+                    <label className="form-label fw-bold">Image</label>
+                    <input
+                      type="file"
+                      onChange={handleFileChange}
+                      className="form-control"
+                    />
+                    {errors.image && (
+                      <div className="alert alert-danger mt-2">
+                        {errors.image[0]}
+                      </div>
+                    )}
+                  </div>
 
-                <div className="mb-3">
-                  <label className="form-label fw-bold">Title</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Title Post"
-                  />
-                  {errors.title && (
-                    <div className="alert alert-danger mt-2">
-                      {errors.title[0]}
-                    </div>
-                  )}
-                </div>
+                  <div className="mb-3">
+                    <label className="form-label fw-bold">Title</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      onChange={(e) => setTitle(e.target.value)}
+                      placeholder="Title Post"
+                    />
+                    {errors.title && (
+                      <div className="alert alert-danger mt-2">
+                        {errors.title[0]}
+                      </div>
+                    )}
+                  </div>
 
-                <div className="mb-3">
-                  <label className="form-label fw-bold">Content</label>
-                  <textarea
-                    className="form-control"
-                    onChange={(e) => setContent(e.target.value)}
-                    rows="5"
-                    placeholder="Content Post"
-                  ></textarea>
-                  {errors.content && (
-                    <div className="alert alert-danger mt-2">
-                      {errors.content[0]}
-                    </div>
-                  )}
-                </div>
+                  <div className="mb-3">
+                    <label className="form-label fw-bold">Content</label>
+                    <textarea
+                      className="form-control"
+                      onChange={(e) => setContent(e.target.value)}
+                      rows="5"
+                      placeholder="Content Post"
+                    ></textarea>
+                    {errors.content && (
+                      <div className="alert alert-danger mt-2">
+                        {errors.content[0]}
+                      </div>
+                    )}
+                  </div>
 
-                <button
-                  type="submit"
-                  className="btn btn-md btn-primary rounded-sm shadow border-0"
-                >
-                  Save
-                </button>
-              </form>
+                  <button
+                    type="submit"
+                    className="btn btn-md btn-primary rounded-sm shadow border-0"
+                  >
+                    Save
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

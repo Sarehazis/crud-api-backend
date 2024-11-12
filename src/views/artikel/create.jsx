@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api";
+import Navbar from "../../components/Navbar";
 
 export default function ArtikelCreate() {
   const [judul, setJudul] = useState("");
@@ -45,58 +46,61 @@ export default function ArtikelCreate() {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card">
-            <div className="card-header">
-              <h2 className="text-center">Create Artikel</h2>
-            </div>
-            <div className="card-body">
-              <form onSubmit={storeArtikel}>
-                <div className="mb-3">
-                  <label htmlFor="judul" className="form-label">
-                    Judul
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="judul"
-                    value={judul}
-                    onChange={(e) => setJudul(e.target.value)}
-                  />
-                  {errors.judul && (
-                    <span className="text-danger">{errors.judul[0]}</span>
-                  )}
-                </div>
+    <>
+      <Navbar />
+      <div className="container mt-5">
+        <div className="row justify-content-center">
+          <div className="col-md-6">
+            <div className="card">
+              <div className="card-header">
+                <h2 className="text-center">Create Artikel</h2>
+              </div>
+              <div className="card-body">
+                <form onSubmit={storeArtikel}>
+                  <div className="mb-3">
+                    <label htmlFor="judul" className="form-label">
+                      Judul
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="judul"
+                      value={judul}
+                      onChange={(e) => setJudul(e.target.value)}
+                    />
+                    {errors.judul && (
+                      <span className="text-danger">{errors.judul[0]}</span>
+                    )}
+                  </div>
 
-                <div className="mb-3">
-                  <label htmlFor="isi" className="form-label">
-                    Isi
-                  </label>
-                  <textarea
-                    className="form-control"
-                    id="isi"
-                    value={isi}
-                    onChange={(e) => setIsi(e.target.value)}
-                  />
-                  {errors.isi && (
-                    <span className="text-danger">{errors.isi[0]}</span>
-                  )}
-                </div>
+                  <div className="mb-3">
+                    <label htmlFor="isi" className="form-label">
+                      Isi
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="isi"
+                      value={isi}
+                      onChange={(e) => setIsi(e.target.value)}
+                    />
+                    {errors.isi && (
+                      <span className="text-danger">{errors.isi[0]}</span>
+                    )}
+                  </div>
 
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  disabled={loading} // Menonaktifkan tombol saat loading
-                >
-                  {loading ? "Menyimpan..." : "Submit"}
-                </button>
-              </form>
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    disabled={loading} // Menonaktifkan tombol saat loading
+                  >
+                    {loading ? "Menyimpan..." : "Submit"}
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

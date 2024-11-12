@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import api from "../../api"; // pastikan api sudah benar diatur
+import Navbar from "../../components/Navbar";
 
 export default function ArtikelIndex() {
   const [artikel, setArtikel] = useState([]);
@@ -34,49 +35,52 @@ export default function ArtikelIndex() {
   };
 
   return (
-    <div className="container mt-5 mb-5">
-      <div className="row">
-        <div>
-          <Link to="/artikels/create" className="btn btn-primary">
-            Tambah Artikel
-          </Link>
-        </div>
-        <div className="col-md-12">
-          <table className="table table-hover">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Judul</th>
-                <th>Isi</th>
-                <th>Aksi</th>
-              </tr>
-            </thead>
-            <tbody>
-              {artikel.map((artikel, index) => (
-                <tr key={artikel.id}>
-                  <td>{index + 1}</td>
-                  <td>{artikel.judul}</td>
-                  <td>{artikel.isi}</td>
-                  <td>
-                    <Link
-                      to={`/artikels/edit/${artikel.id}`}
-                      className="btn btn-warning me-2"
-                    >
-                      Edit
-                    </Link>
-                    <button
-                      onClick={() => deleteArtikel(artikel.id)}
-                      className="btn btn-danger me-2"
-                    >
-                      Hapus
-                    </button>
-                  </td>
+    <>
+      <Navbar />
+      <div className="container mt-5 mb-5">
+        <div className="row">
+          <div>
+            <Link to="/artikels/create" className="btn btn-primary">
+              Tambah Artikel
+            </Link>
+          </div>
+          <div className="col-md-12">
+            <table className="table table-hover">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Judul</th>
+                  <th>Isi</th>
+                  <th>Aksi</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {artikel.map((artikel, index) => (
+                  <tr key={artikel.id}>
+                    <td>{index + 1}</td>
+                    <td>{artikel.judul}</td>
+                    <td>{artikel.isi}</td>
+                    <td>
+                      <Link
+                        to={`/artikels/edit/${artikel.id}`}
+                        className="btn btn-warning me-2"
+                      >
+                        Edit
+                      </Link>
+                      <button
+                        onClick={() => deleteArtikel(artikel.id)}
+                        className="btn btn-danger me-2"
+                      >
+                        Hapus
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

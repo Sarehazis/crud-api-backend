@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../api";
+import Navbar from "../../components/Navbar";
 
 export default function ArtikelEdit() {
   const [judul, setJudul] = useState("");
@@ -46,52 +47,55 @@ export default function ArtikelEdit() {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-8">
-          <div className="card">
-            <div className="card-header">Edit Artikel</div>
-            <div className="card-body">
-              <form onSubmit={updateArtikel}>
-                <div className="mb-3">
-                  <label htmlFor="judul" className="form-label">
-                    Judul
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="judul"
-                    value={judul}
-                    onChange={(e) => setJudul(e.target.value)}
-                  />
-                  {errors.judul && (
-                    <div className="alert alert-danger">{errors.judul}</div>
-                  )}
-                </div>
+    <>
+      <Navbar />
+      <div className="container mt-5">
+        <div className="row justify-content-center">
+          <div className="col-md-8">
+            <div className="card">
+              <div className="card-header">Edit Artikel</div>
+              <div className="card-body">
+                <form onSubmit={updateArtikel}>
+                  <div className="mb-3">
+                    <label htmlFor="judul" className="form-label">
+                      Judul
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="judul"
+                      value={judul}
+                      onChange={(e) => setJudul(e.target.value)}
+                    />
+                    {errors.judul && (
+                      <div className="alert alert-danger">{errors.judul}</div>
+                    )}
+                  </div>
 
-                <div className="mb-3">
-                  <label htmlFor="isi" className="form-label">
-                    Isi
-                  </label>
-                  <textarea
-                    className="form-control"
-                    id="isi"
-                    value={isi}
-                    onChange={(e) => setIsi(e.target.value)}
-                  />
-                  {errors.isi && (
-                    <div className="alert alert-danger">{errors.isi}</div>
-                  )}
-                </div>
+                  <div className="mb-3">
+                    <label htmlFor="isi" className="form-label">
+                      Isi
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="isi"
+                      value={isi}
+                      onChange={(e) => setIsi(e.target.value)}
+                    />
+                    {errors.isi && (
+                      <div className="alert alert-danger">{errors.isi}</div>
+                    )}
+                  </div>
 
-                <button type="submit" className="btn btn-primary">
-                  Simpan
-                </button>
-              </form>
+                  <button type="submit" className="btn btn-primary">
+                    Simpan
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
