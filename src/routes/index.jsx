@@ -6,7 +6,7 @@ import ArtikelIndex from "../views/artikel/index.jsx";
 import ArtikelEdit from "../views/artikel/edit.jsx";
 import ArtikelCreate from "../views/artikel/create.jsx";
 import Login from "../views/Login.jsx";
-import Dashboard from "../views/dashboard.jsx";
+import Dashboard from "../views/Dashboard.jsx";
 import Register from "../views/Register.jsx";
 
 function RoutesIndex() {
